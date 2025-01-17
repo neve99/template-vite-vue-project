@@ -2,9 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 
 
-import Hawaii from '@/views/Hawaii.vue'
-import Jamaica from '@/views/Jamaica.vue'
-import Panama from '@/views/Panama.vue'
+
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -13,6 +11,7 @@ const routes = [
   { path: '/hawaii', name: 'Hawaii', component: () => import('@/views/Hawaii.vue') },
   { path: '/jamaica', name: 'Jamaica', component: () => import('@/views/Jamaica.vue') },
   { path: '/panama', name: 'Panama', component: () => import('@/views/Panama.vue') },
+  { path: '/destination/:id', name: 'Destination', component: () => import('@/views/DestinationShow.vue') }
 ]
 const router = createRouter({
   history: createWebHistory(),
