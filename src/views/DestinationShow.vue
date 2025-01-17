@@ -46,7 +46,7 @@ const props = defineProps({
 
 
 const destination = computed(() => {
-  return sourceData.destinations.find(destination => destination.id == parseInt(props.id))
+  return sourceData.destinations.find(destination => destination.id == props.id)
 })
 
 
