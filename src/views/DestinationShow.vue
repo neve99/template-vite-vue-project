@@ -27,6 +27,7 @@
 </script> -->
 
 <script setup>
+// composition API
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import sourceData from '@/data.json'
