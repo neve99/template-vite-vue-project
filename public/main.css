@@ -36,8 +36,8 @@ a:visited {
 .home .destinations {
   display: flex;
   justify-content: space-between;
-  align-items: left;
-  background-color: #000;
+
+
 }
 
 /* Navigation */
