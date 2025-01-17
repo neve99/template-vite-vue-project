@@ -6,7 +6,7 @@ import TheNavigation from '@/components/TheNavigation.vue'
   <div>
     <TheNavigation />
     <div class="container">
-      <router-view />
+      <router-view :key="$route.path" />
     </div>
   </div>
 

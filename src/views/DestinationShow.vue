@@ -12,14 +12,20 @@
   import sourceData from '@/data.json'
 
   export default {
+    props: {
+      id: {
+        type: String,
+        required: true
+      }
+    },
     computed: {
-      destinationID() {
-        return parseInt( this.$route.params.id )
-      },
+      // destinationID() {
+      //   return parseInt( this.$route.params.id )
+      // },
 
       destination() {
       // find the destination with the same id as the route parameter
-      return sourceData.destinations.find( destination => destination.id === this.destinationID )
+      return sourceData.destinations.find( destination => destination.id ==parseInt( this.id) )
       }
     },
     
@@ -29,11 +35,42 @@
 <script setup>
 // composition API
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
 import sourceData from '@/data.json'
 
-const route = useRoute()
-const destinationID = computed(() => parseInt(route.params.id))
-// find the destination with the same id as the route parameter
-const destination = computed(() => sourceData.destinations.find(destination => destination.id === destinationID.value))
+const props = defineProps({
+  id: {
+    type: String,
+    required: true
+  }
+})
+
+
+const destination = computed(() => {
+  return sourceData.destinations.find(destination => destination.id == parseInt(props.id))
+})
+
+
 </script>
+
+
+
+
+<!-- 
+ <script setup>
+ // composition API
+import { computed } from 'vue'
+import sourceData from '@/data.json'
+
+// Define props
+const props = defineProps({
+  id: {
+    type: String,
+    required: true
+  }
+})
+
+// Find the destination with the same id as the prop id
+const destination = computed(() => {
+  return sourceData.destinations.find(destination => destination.id === parseInt(props.id))
+})
+</script> -->
