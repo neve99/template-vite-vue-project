@@ -1,12 +1,44 @@
 <template>
-  <div>
-    <h2>{{ destination.name }}</h2>
+  <section v-if="destination" class="destination">
+    <h1>{{ destination.name }}</h1>
     <div class="destination-details">
       <img :src="`/images/${destination.image}`" :alt="destination.name">
       <p>{{ destination.description }}</p>
     </div>
+  </section>
+
+  <section class="experiences">
+    <h2>Top experiences in {{ destination.name }}</h2>
+    <div class="cards">
+      <ExperienceCard
+        v-for="experience in destination.experiences"
+        :key="experience.slug"
+        :experience="experience"
+      />
   </div>
+  </section>
 </template>
+
+<script setup>
+// composition API
+import { computed } from 'vue'
+import sourceData from '@/data.json'
+import ExperienceCard from '@/components/ExperienceCard.vue';
+
+const props = defineProps({
+  id: {
+    type: Number,
+    required: true
+  }
+})
+
+
+const destination = computed(() => {
+  return sourceData.destinations.find(destination => destination.id === props.id)
+})
+
+
+</script>
 
 <!-- <script>
   import sourceData from '@/data.json'
@@ -31,29 +63,6 @@
     
   }
 </script> -->
-
-<script setup>
-// composition API
-import { computed } from 'vue'
-import sourceData from '@/data.json'
-
-const props = defineProps({
-  id: {
-    type: String,
-    required: true
-  }
-})
-
-
-const destination = computed(() => {
-  return sourceData.destinations.find(destination => destination.id == props.id)
-})
-
-
-</script>
-
-
-
 
 <!-- 
  <script setup>
